@@ -872,9 +872,11 @@ Callers of this function already widen the buffer view."
                    (has-next ))
               (save-excursion
                 (forward-line 1)
-                (while (and (not has-next) (< (point) subtree-end) (re-search-forward "^\\*+ NEXT " subtree-end t))
-                  (unless (member "WAITING" (org-get-tags-at))
-                    (setq has-next t))))
+                (if (and (not has-next) (< (point) subtree-end)
+                         (or (re-search-forward "^\\*+ NEXT " subtree-end t)
+                             (and (re-search-forward "^\\*+ WAITING " subtree-end t)
+                                  (member "WAITING" (org-get-tags)))))
+                  (setq has-next t)))
               (if has-next
                   nil
                 next-headline)) ; a stuck project, has subtasks but no next task
@@ -891,9 +893,11 @@ Callers of this function already widen the buffer view."
                    (has-next ))
               (save-excursion
                 (forward-line 1)
-                (while (and (not has-next) (< (point) subtree-end) (re-search-forward "^\\*+ NEXT " subtree-end t))
-                  (unless (member "WAITING" (org-get-tags-at))
-                    (setq has-next t))))
+                (if (and (not has-next) (< (point) subtree-end)
+                         (or (re-search-forward "^\\*+ NEXT " subtree-end t)
+                             (and (re-search-forward "^\\*+ WAITING " subtree-end t)
+                                  (member "WAITING" (org-get-tags)))))
+                  (setq has-next t)))
               (if has-next
                   next-headline
                 nil)) ; a stuck project, has subtasks but no next task
