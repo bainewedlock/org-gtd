@@ -566,8 +566,8 @@ so change the default 'F' binding in the agenda to allow both"
                  "* PHONE %? :PHONE:\n%U" :clock-in t :clock-resume t)
                 ("h" "Habit" entry (file "~/git/org/refile.org")
                  "* NEXT %?\n%U\n%a\nSCHEDULED: %(format-time-string \"%<<%Y-%m-%d %a .+1d/3d>>\")\n:PROPERTIES:\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:END:\n")
-                ("s" "someday/maybe" entry (file "~/git/org/refile.org")
-                 "* xTODO %? :SOMEDAY:\n%U\n%a\n" :clock-in t :clock-resume t))))
+                ("s" "someday/maybe" entry (file+olp "~/git/org/someday.org" "Someday")
+                 "* TODO %?\n%U\n%a\n" :clock-in t :clock-resume t))))
 
   ;; Remove empty LOGBOOK drawers on clock out
   (defun bh/remove-empty-drawer-on-clock-out ()
