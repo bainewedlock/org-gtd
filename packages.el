@@ -636,7 +636,7 @@ so change the default 'F' binding in the agenda to allow both"
   ;; Include current clocking task in clock reports
   (setq org-clock-report-include-clocking-task t)
   ;; Resolve open clocks if the user is idle for more than 10 minutes.
-  (setq org-clock-idle-time 10)
+  (setq org-clock-idle-time 60)
   ;;
   ;; Resume clocking task when emacs is restarted
   (org-clock-persistence-insinuate)
