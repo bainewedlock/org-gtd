@@ -457,7 +457,7 @@ so change the default 'F' binding in the agenda to allow both"
   (global-set-key (kbd "<S-f5>") 'bh/widen)
   (global-set-key (kbd "<f10>") 'bh/set-truncate-lines)
   (global-set-key (kbd "<f8>") 'org-cycle-agenda-files)
-  (global-set-key (kbd "<f9> <f9>") 'bh/show-org-agenda)
+  (global-set-key (kbd "<f9> <f9>") 'org-clock-goto)
   (global-set-key (kbd "<f9> c") 'calendar)
   (global-set-key (kbd "<f9> g") 'gnus)
   (global-set-key (kbd "<f9> h") 'bh/hide-other)
