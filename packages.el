@@ -550,23 +550,23 @@ so change the default 'F' binding in the agenda to allow both"
   ;; Capture templates for: TODO tasks, Notes, appointments, phone calls,
   ;; meetings, and org-protocol
   (setq org-capture-templates
-        (quote (("t" "todo" entry (file "~/git/org/refile.org")
+        (quote (("t" "todo" entry (file+headline org-default-notes-file "Tasks")
                  "* TODO %?\n%U\n" :clock-in t :clock-resume t)
-                ("r" "respond" entry (file "~/git/org/refile.org")
+                ("r" "respond" entry (file+headline org-default-notes-file "Tasks")
                  "* NEXT Respond to %:from on %:subject\nSCHEDULED: %t\n%U\n" :clock-in t :clock-resume t :immediate-finish t)
-                ("n" "note" entry (file "~/git/org/refile.org")
+                ("n" "note" entry (file+headline org-default-notes-file "Notes")
                  "* %? :NOTE:\n%U\n" :clock-in t :clock-resume t)
                 ("j" "Journal" entry (file+datetree "~/git/org/diary.org")
                  "* %?\n%U\n" :clock-in t :clock-resume t)
-                ("w" "org-protocol" entry (file "~/git/org/refile.org")
+                ("w" "org-protocol" entry (file+headline org-default-notes-file "Notes")
                  "* TODO Review %c\n%U\n" :immediate-finish t)
-                ("m" "Meeting" entry (file "~/git/org/refile.org")
+                ("m" "Meeting" entry (file+headline org-default-notes-file "Notes")
                  "* MEETING with %? :MEETING:\n%U" :clock-in t :clock-resume t)
-                ("p" "Phone call" entry (file "~/git/org/refile.org")
+                ("p" "Phone call" entry (file+headline org-default-notes-file "Notes")
                  "* PHONE %? :PHONE:\n%U" :clock-in t :clock-resume t)
-                ("h" "Habit" entry (file "~/git/org/refile.org")
+                ("h" "Habit" entry (file+headline org-default-notes-file "Tasks")
                  "* NEXT %?\nSCHEDULED: %(format-time-string \"%<<%Y-%m-%d %a .+1d/3d>>\")\n:PROPERTIES:\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:END:\n%U\n")
-                ("s" "someday/maybe" entry (file+olp "~/git/org/someday.org" "Someday")
+                ("s" "someday/maybe" entry (file+headline "~/git/org/someday.org" "Someday")
                  "* TODO %?\n%U\n" :clock-in t :clock-resume t))))
 
   ;; Remove empty LOGBOOK drawers on clock out
