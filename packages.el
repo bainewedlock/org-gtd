@@ -552,6 +552,8 @@ so change the default 'F' binding in the agenda to allow both"
   (setq org-capture-templates
         (quote (("t" "todo" entry (file+headline org-default-notes-file "Tasks")
                  "* TODO %?\n%U\n" :clock-in t :clock-resume t)
+                ("l" "todo on leave" entry (file+headline org-default-notes-file "Tasks")
+                 "* TODO <[ON LEAVE]>%? :WAITING:\n%U\n" :clock-in t :clock-resume t)
                 ("r" "respond" entry (file+headline org-default-notes-file "Tasks")
                  "* NEXT Respond to %:from on %:subject\nSCHEDULED: %t\n%U\n" :clock-in t :clock-resume t :immediate-finish t)
                 ("n" "note" entry (file+headline org-default-notes-file "Notes")
