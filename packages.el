@@ -98,7 +98,7 @@
                   (org-agenda-sorting-strategy
                    '(todo-state-down effort-up category-keep))))
                 ("c" "Agenda"
-                 ((agenda "" nil)
+                 ((agenda "" ((org-agenda-skip-function 'bw/skip-scheduled-later)))
                   (tags-todo "-CANCELLED/!NEXT"
                              ((org-agenda-overriding-header
                                (concat "Project Next Tasks"
@@ -904,6 +904,21 @@ Callers of this function already widen the buffer view."
                   next-headline
                 nil)) ; a stuck project, has subtasks but no next task
           next-headline))))
+
+  (defun bw/skip-scheduled-later ()
+  "If this function returns nil, the current match should not be skipped.
+   Otherwise, the function must return a position from where the search
+   should be continued."
+    (ignore-errors
+      (let ((subtree-end (save-excursion (org-end-of-subtree t)))
+            (scheduled-seconds
+             (time-to-seconds
+              (org-time-string-to-time
+               (org-entry-get nil "SCHEDULED"))))
+            (now (time-to-seconds (current-time))))
+        (and scheduled-seconds
+             (>= scheduled-seconds now)
+             subtree-end))))
 
   (defun bh/skip-non-projects ()
     "Skip trees that are not projects"
