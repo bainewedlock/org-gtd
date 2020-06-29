@@ -569,7 +569,9 @@ so change the default 'F' binding in the agenda to allow both"
                 ("h" "Habit" entry (file+headline org-default-notes-file "Tasks")
                  "* NEXT %?\nSCHEDULED: %(format-time-string \"%<<%Y-%m-%d %a .+1d/3d>>\")\n:PROPERTIES:\n:STYLE: habit\n:REPEAT_TO_STATE: NEXT\n:END:\n%U\n")
                 ("s" "someday/maybe" entry (file+headline "~/git/org/someday.org" "Someday")
-                 "* TODO %?\n%U\n" :clock-in t :clock-resume t))))
+                 "* TODO %?\n%U\n" :clock-in t :clock-resume t)
+                ("d" "daily jour fixe" entry (file+headline org-default-notes-file "Tasks")
+                 "* TODO Daily Jour Fixe %?%t [/]\n- [ ] Agenda ausfüllen\n- [ ] Abgleich mit Kanban Board (passt \"Aktiv / als nächstes\"?)\n- [ ] Abgleich mit Prio (passt \"Aktiv / als nächstes\"?)\n*** Prio:\n*** Fertig\n*** Aktiv / als nächstes:\n*** Hürden:\n*** News:\n"))))
 
   ;; Remove empty LOGBOOK drawers on clock out
   (defun bh/remove-empty-drawer-on-clock-out ()
