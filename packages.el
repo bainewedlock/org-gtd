@@ -213,6 +213,11 @@
   ;; If we leave Emacs running overnight - reset the appointments one minute after midnight
   (run-at-time "24:01" nil 'bh/org-agenda-to-appt)
 
+  (defun bw/org-todo ()
+    (interactive)
+    (org-agenda-switch-to)
+    (org-narrow-to-subtree))
+
   (defun bh/org-todo (arg)
     (interactive "p")
     (if (equal arg 4)
@@ -453,7 +458,7 @@ so change the default 'F' binding in the agenda to allow both"
   (global-set-key "\C-cb" 'org-switchb)
 
   ;; Custom Key Bindings
-  (global-set-key (kbd "<f5>") 'bh/org-todo)
+  (global-set-key (kbd "<f5>") 'bw/org-todo)
   (global-set-key (kbd "<S-f5>") 'bh/widen)
   (global-set-key (kbd "<f10>") 'bh/set-truncate-lines)
   (global-set-key (kbd "<f8>") 'org-cycle-agenda-files)
